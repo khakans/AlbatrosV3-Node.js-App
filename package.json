@@ -1,0 +1,19 @@
+{
+  "authors": "khakans (khairul kanters)",
+  "name": "Albatros-V3",
+  "version": "1.3.0",
+  "description": "komurindo rocket payload",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "Khairul Kanters",
+  "license": "ISC",
+  "dependencies": {
+    "btoa": "^1.2.1",
+    "express": "^4.17.1",
+    "moment-timezone": "^0.5.28",
+    "serialport": "^8.0.8",
+    "socket.io": "^2.3.0"
+  }
+}
