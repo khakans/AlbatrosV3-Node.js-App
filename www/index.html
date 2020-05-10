@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>albatros aptrg</title>
+        <link rel="stylesheet" href="vendor/css/main_style.css">
+        <link rel="stylesheet" href="vendor/bootstrap-4.3.1/css/bootstrap.min.css"> 
+        <!--plot-->
+        <script src="vendor/plotly/plotly-latest.min.js"></script>
+        <script src="vendor/highchart/highcharts.js"></script>
+        <script src="vendor/highchart/highcharts-more.js"></script>
+        <!--sprite-->
+        <script src="vendor/d3js/d3.js"></script>
+        <!--sprite 3d-->
+        <script src="vendor/sprite3d/Sprite3D.js"></script>
+        <!--Jquery-->
+        <script type="text/javascript" src="vendor/jquery.min.js"></script><!--jquerry-->
+        <script type="text/javascript" src="vendor/jquery-1.10.2.min.js"></script><!--jquerry-->
+        <script src="vendor/bootstrap-4.3.1/js/bootstrap.min.js"></script>
+    
+        <link rel="stylesheet" type="text/css" href="vendor/css/animate.min.css"/>
+        <link rel="stylesheet/less" type="text/css" href="vendor/less/sikap.less">
+        <!--flot-->
+        <script type="text/javascript" src="vendor/flot/jquery.flot.js"></script>
+        <script type="text/javascript" src="vendor/flot/jquery.flot.pie.js"></script>
+        <script type="text/javascript" src="vendor/flot/jquery.flot.orderBars.js"></script>
+        <script type="text/javascript" src="vendor/flot/jquery.flot.time.min.js"></script>
+        <script type="text/javascript" src="vendor/flot/date.js"></script>
+        <script type="text/javascript" src="vendor/flot/jquery.flot.spline.js"></script>
+        <script type="text/javascript" src="vendor/flot/jquery.flot.stack.js"></script>
+        <script type="text/javascript" src="vendor/flot/curvedLines.js"></script>
+        <script type="text/javascript" src="vendor/flot/jquery.flot.resize.js"></script>
+
+        <!--map google api-->
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
+        <script type="text/javascript" src="http://localhost:3111/socket.io/socket.io.js"></script>
+</head>
+<style>
+    .row.mainA{
+        margin-top: 2px;
+    }
+    .col-sm-2.div{
+        margin-right:-24px;
+    }
+    .card{
+        margin: 2px;
+    }
+    .card.A.on1{
+        height: 700px;
+        border: 0px;
+    }
+    .card.B.on2{
+        width: 102%;
+        border: 0px;
+    }
+    .card.C.on3{
+        height: 55px;
+        border: 1px solid rgb(255, 132, 0);
+        border-radius: 10px;
+        margin-left:4px;
+        background-color: rgba(17, 17, 17,0.97);
+    }
+    .card.A,.card.B{
+        background-color: rgba(0,0,0,0);
+    }
+    .col-sm-4.A{
+        padding-right: 0px;
+    }
+    .col-sm-4.B{
+        padding-right: 0px;
+        padding-left: 0px;
+    }
+    .col-sm-4.C{
+        padding-left: 0px;
+    }
+    .card.up{
+        height: 330px;
+        border: 1px solid rgb(255, 132, 0);
+        border-radius: 10px;
+        background-color: rgba(17, 17, 17,0.97);
+    }
+    .card.do{
+        height: 360px;
+        border: 1px solid rgb(255, 132, 0);
+        border-radius: 10px;
+        background-color: rgba(17, 17, 17,0.97);
+    }
+    .card.side{
+        height: 100px;
+        border: 1px solid rgb(255, 132, 0);
+        border-radius: 10px;
+        background-color: rgba(17, 17, 17,0.97);
+        text-align: center;
+        color: rgb(255, 132, 0);
+    }
+    .card-header{
+        height:20px;
+        background-color: rgba(255, 132, 0,0.5);
+        text-align: center;
+    }
+    .card-footer{
+        height:20px;
+        background-color: rgba(255, 132, 0,0.5);
+        text-align: center;
+    }
+    .site-stats {
+        margin: 0;
+        padding: 0;
+        text-align:center;
+        list-style: none;
+    }
+    .site-stats li {
+        cursor: pointer;
+        display:inline-block;
+        margin: 0 1px 3px;
+        text-align:center;
+        width:30%;
+        padding:3px 0;
+        color:rgb(255, 255, 255);
+        position: relative;
+    }
+    .site-stats li i {
+        font-size:24px;
+        clear:both;
+    }
+    .site-stats li i {
+        vertical-align: baseline;
+    }
+    .site-stats li strong {
+        font-weight: bold;
+        font-size: 20px;
+        width:100%;
+        float:left;
+        margin-left:0px;
+    }
+    .site-stats li small {
+        margin-left:0px;
+        font-size: 14px;
+        width:100%;
+        float:left;
+    }
+    .img-thumbnail.back{
+        background-color: rgba(0,0,0,0);
+    }
+    .tombol{
+        height:38px;
+    }
+    .modal-body{
+        height: 500px;
+    }
+    
+    .card.gauge{
+        height:150px;
+        border-radius:20px;
+        background-color: rgba(0,0,0,0);
+        border:1px solid rgb(255, 132, 0);
+    }
+    .kolom {
+        float: left;
+        width: 50%;
+        padding: 5px;
+        text-align: center;
+    }
+    /* Clear floats after the columns */
+    .baris:after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+    
+    /*ini cube bray*/   
+    .cube {
+        border: 1px solid white;
+        box-sizing: border-box;
+        /* transition: transform .5s ease-in-out; */
+        transition: transform .1s ease-in-out;
+        /* note: might need some vendor prefixes around here :) */
+    }
+    .cube .front,
+    .cube .back {
+        background: rgba(151, 0, 252, 0.85);
+    }
+    .cube .left,
+    .cube .right {
+        background: rgba(255, 0, 0, 0.85);
+    }
+    .cube .top,
+    .cube .bottom {
+        background: rgb(0, 13, 255);
+    }
+</style>
+<body onload="update()" style="background: url('vendor/image/background5.jpg') no-repeat center fixed; background-size: cover; overflow: hidden;">
+    <div class="container-fluid">
+        <div class="row mainB">
+            <div class="col-sm-12">
+                <div class="card C on3">
+                    <div class="row" style="margin-top:-1px;">
+                        <div class="col-md-6" align="left">
+                            <!-- <textarea style="font-size: 7px; background-color: black; color:white; border-radius: 10px; height:45px; width: 380px; margin-top:5px;" rows="1" cols="68" id="textrawdata"></textarea> -->
+                            <img src="vendor/image/kkm1819.png" alt="Komurindo & Kombat" style="height:70px; margin-top:-12px;">
+                            <img src="vendor/image/lapan.png" alt="LAPAN" style="height:67px; margin-top:-3px;">
+                        </div>
+                        <!-- <div class="col-md-4">
+                            
+                        </div> -->
+                        <div class="col-md-6" style="margin-top:2px; margin-left:-13px;">
+                            <span>
+                                <div class="d-flex" style="margin-left:30px">
+                                    <div class="p-1">
+                                        <fieldset style="margin-top:-8px; width:43px; height: 50px; border:solid rgba(211, 112, 0, 0.7) 2px; border-radius:10px;" >
+                                            <legend style="font-size:12px; color: white">satelite</legend>
+                                            <div align="center" style="margin-top:-15px; ">
+                                                <label style="color: rgba(211, 112, 0); font-size:25px" id="Satellite">0</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="p-1">
+                                        <fieldset style="margin-top:-8px; width:100px; height: 50px; border:solid rgba(211, 112, 0, 0.7) 2px; border-radius:10px;" >
+                                            <legend style="font-size:12px; color: white">time</legend>
+                                            <div align="center" style="margin-top:-15px; ">
+                                                <label style="color: rgba(211, 112, 0); font-size:25px" id="timess">00:00:00 </label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="p-1">
+                                        <fieldset style="margin-top:-8px; width:100px; height: 50px; border:solid rgba(211, 112, 0, 0.7) 2px; border-radius:10px;" >
+                                            <legend style="font-size:12px; color: white">message</legend>
+                                            <div align="center" style="margin-top:-8px; ">
+                                                <label style="color: rgba(211, 112, 0); font-size:12px" id="message">no message</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="p-1">
+                                        <fieldset style="margin-top:-8px; width:100px; height: 50px; border:solid rgba(211, 112, 0, 0.7) 2px; border-radius:10px;" >
+                                            <legend style="font-size:12px; color: white">status</legend>
+                                            <div align="center" style="margin-top:-8px; ">
+                                                <label style="color: rgba(211, 112, 0); font-size:12px" id="statusparse">on ready</label>
+                                            </div>
+                                        </fieldset>
+                                    </div>
+                                    <div class="p-1">
+                                            <button onclick="takePictSerial()" style="background-color: rgba(0, 0, 0, 0); border-radius: 30px;"><img class="tombol" src="vendor/image/capture.png"></button>
+                                    </div> 
+                                    <div class="p-1">
+                                            <button onclick="sethome()" style="background-color: rgba(0, 0, 0, 0); border-radius: 30px;"><img class="tombol" src="vendor/image/homegps.png"></button>
+                                    </div> 
+                                    <div class="p-1">
+                                            <button onclick="compasscalib()" style="background-color: rgba(0, 0, 0, 0); border-radius: 30px;"><img class="tombol" src="vendor/image/calibrations.png">
+                                    </div> 
+                                    <div class="p-1" id="aksi">
+
+                                    </div> 
+                                </div>
+                            </span>
+                            <script>
+                                document.getElementById("aksi").innerHTML = "<button onclick='startSerial()' style='background-color: rgba(0, 0, 0, 0); border-radius: 30px;'><img class='tombol' id='parsing' src='vendor/image/stop.png'></button>"
+                            </script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mainA">
+            <div class="col-sm-2 div">
+                <div class="card A on1">
+                    <div class="card side" style="height: 70px">
+                        <p class="head"  style="margin-top:1px">
+                        FLIGHT TIME
+                        </p>
+                        <hr style="border-top: 1px solid orange; margin-top:-10px; margin-bottom:-3px;">
+                        <label class="konten" style="font-size: 25px; color: white;" id="timeplus">
+                        00:00:00
+                        </label>
+                    </div>
+                    <div class="card side" style="height: 272px">
+                        <p class="head">FLIGHT STATUS</p>
+                        <hr style="border-top: 1px solid orange; margin-top:-15px; margin-bottom:5px;">
+                        <div align="center">
+                            <img class="img" id="imgss" style="margin-top:1px; width: 150px" src="vendor/image/status/SESI1.png">
+                        </div>
+                    </div>
+                    <div class="card side" style="height: 60px">
+                        <p class="head" style="margin-top: 0px">
+                        APOGEE
+                        </p>
+                        <hr style="border-top: 1px solid orange; margin-top:-12px; margin-bottom:-2px;">
+                        <p class="konten" id="Apogee" style="color: white; font-size: 20px">
+                        000
+                        </p></br>
+                    </div>
+                    <div class="card side" style="height: 60px">
+                        <div style="margin-top: 12px">
+                            <div class="row">
+                                <div class="col-md-6"><p style="font-size: 11px">LATITUDE</p></div>
+                                <div class="col-md-6"><p style="font-size: 11px">LONGITUDE</p></div>
+                            </div>
+                            <div class="row" style="margin-top: -15px">
+                                <div class="col-md-6"><p style="font-size: 11px; color: white;" class="konten" id="Latit">-00.000.000</p></div>
+                                <div class="col-md-6"><p style="font-size: 11px; color: white;" class="konten" id="Longi">-00.000.000</p></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card side" style="height: 215px">
+                        <div align="center"><canvas id="canvasroll" style="margin-top:1px"></canvas></div>
+                        <div align="center"><canvas id="canvaspitch" style="margin-top:1px"></canvas></div>
+                        <div align="center"><canvas id="canvasyaw" style="margin-top:1px"></canvas></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-10 div">
+                <div class="card B on2">
+                    <div class="row">
+                        <div class="col-sm-4 A">
+                            <div class="card up">
+                                <div class="card-header" style="border-radius: 10px 10px 0px 0px;">
+                                    <div class="d-flex justify-content-between" style="margin-top: -22px;">
+                                        <div class="p-2" style="margin-top: 1px; margin-left: -40px; color:rgba(255, 255, 255,0.8)"><img style="height:22px; margin-top: -2px;" src="vendor/image/icongallery.png"></div>
+                                        <div class="p-2"></div>
+                                        <div class="p-2" style="margin-right: -8px">
+                                            <button class="btn btn-warning" style="height:20px;" data-toggle="modal" data-target="#myModal" id="gallerys"><p style="margin-top:-10px; color:white">open</p></button>
+                                            <!-- The Modal -->
+                                            <div class="modal" id="myModal" style="margin-top:80px; margin-left: -150px;">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content" style="width: 800px; background-color: rgba(0,0,0,0.6); border: 1px solid rgb(255, 132, 0);">
+                                                        <div class="modal-header" style="height:30px; border: 1px solid rgb(255, 132, 0); background-color: rgba(255, 132, 0,0.5);">
+                                                            <h6 class="modal-title" style="margin-top:-13px; color: rgba(255, 255, 255,0.8)">Gallery Foto Udara</h6>
+                                                            <button style="margin-top:-32px;" type="button" class="close" data-dismiss="modal">&times;</button>
+                                                        </div>
+                                                        <div class="modal-body" style="background-color: rgba(0,0,0,0.6); border: 1px solid rgb(255, 132, 0);">
+                                                            <div style="width:100%; height:500px;">
+                                                                <div id="fotoudara" class="row fotoudara">
+                                                                
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modal-footer" style="background-color: rgba(255, 132, 0,0.5);; border: 1px solid rgb(255, 132, 0);"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <img id="realtimefoto" style="height: 265px; width: 380px; overflow-x:hidden; overflow-y:hidden" class="img-thumbnail back" src="vendor/image/Gallery.png" onerror="this.onerror=null; this.src='vendor/image/Gallery.png'">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 B">
+                            <div class="card up">
+                                </style>
+                                <div class="baris">
+                                        <div class='kolom'><div class='card gauge' align="center"><canvas id="gaugecompass" style="margin-top:3px"></canvas></div></div>
+                                        <div class='kolom'><div class='card gauge' align="center"><canvas id="gaugespeed" style="margin-top:3px"></canvas></div></div>
+                                </div>
+                                <div class="baris">
+                                    <div style="width:100%">
+                                        <div class='card gauge'>
+                                            <ul class="site-stats" style="margin-top:5px">
+                                                <li class="bg_lh"><small style="font-size: 15px; color:rgb(255, 132, 0);;">Jarak</small></br><p class="count green" id="Dist">000</p></li>
+                                                <li class="bg_lh"><small style="font-size: 15px; color:rgb(255, 132, 0);;">Alti</small></br><p class="count green" id="Altit">000</p></li>
+                                                <li class="bg_lh"><small style="font-size: 15px; color:rgb(255, 132, 0);;">Vertical</small></br><p class="count green" id="Vert">000</p></li>
+                                                <li class="bg_lh"><small style="font-size: 15px; color:rgb(255, 132, 0);;">Roll</small></br><p class="count green" id="Roll">000</p></li>
+                                                <li class="bg_lh"><small style="font-size: 15px; color:rgb(255, 132, 0);;">Pitch</small></br><p class="count green" id="Pitch">000</p> </li>
+                                                <li class="bg_lh"><small style="font-size: 15px; color:rgb(255, 132, 0);;">Yaw</small></br><p class="count green" id="Yaw">000</p> </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 C">
+                            <div class="card up">
+                                <div class="card-header" style="border-radius: 10px 10px 0px 0px;"><img style="height:23px; margin-top: -28px;" src="vendor/image/imuplot.png"></div>
+                                <div class="card-body" >
+                                    <div>
+                                        <div id="GrafikGyroscope" style="margin-bottom:-53px; margin-top:-20px; margin-left:-20px; width:112%; height:120px"></div>
+                                    </div>
+                                </div>
+                                <div class="card-header" style="border-radius: 0px 0px 0px 0px;"><img style="height:23px; margin-top: -28px;" src="vendor/image/aperd.png"></div>
+                                <div class="card-body">
+                                    <div>
+                                        <div id="GrafikJarakAlt" style="margin-left:-14px; margin-top:-18px; margin-bottom:-50px; width:108.5%; height:150px; border: 2px solid grey;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4 A">
+                            <div class="card do">
+                                <div class="card-header" style="border-radius: 10px 10px 0px 0px;"><img style="height:24px; margin-top: -28px;" src="vendor/image/icongooglemap.png"></div>
+                                <div class="card-body" id="googlemap" style="border-radius: 0px 0px 10px 10px;"></div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 B">
+                            <div class="card do">
+                                <div class="card-header" style="border-radius: 10px 10px 0px 0px;"><img style="height:23px; margin-top: -28px;" src="vendor/image/trajectorylabel.png"></div>
+                                <div class="card-body">
+                                        <div  id="odometry" style="margin-top:-45px"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 C">
+                            <div class="card do">
+                                <div class="card-header" style="border-radius: 10px 10px 0px 0px;"><img style="height:34px; margin-top: -26px;" src="vendor/image/3dattitude.png"></div>
+                                <div class="card-body">
+                                    <div id="sikap" style="margin-left: 165px; margin-top: 150px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<!--data--> 
+<script src="app/streamdata.js"></script>
+<!--gauge-->
+<script src="vendor/gauge/gauge.js"></script>
+<script src="vendor/gauge/gaugelinier.js"></script>
+<script src="vendor/gauge/gauges.min.js"></script>
+<!--highcharts-->
+<script src="vendor/highchart/modules/exporting.js"></script>
+<script src="vendor/highchart/modules/offline-exporting.js"></script>
+</html>
