@@ -1,0 +1,111 @@
+.site-stats {
+    margin: 0;
+    padding: 0;
+    text-align:center;
+    list-style: none;
+}
+.site-stats li {
+    cursor: pointer;
+    display:inline-block;
+    margin: 0 1px 3px;
+    text-align:center;
+    width:30%;
+    padding:3px 0;
+    color:rgb(0, 0, 0);
+    position: relative;
+}
+.site-stats li i {
+    font-size:24px;
+    clear:both;
+}
+.site-stats li i {
+    vertical-align: baseline;
+}
+.site-stats li strong {
+    font-weight: bold;
+    font-size: 20px;
+    width:100%;
+    float:left;
+    margin-left:0px;
+}
+.site-stats li small {
+    margin-left:0px;
+    font-size: 14px;
+    width:100%;
+    float:left;
+}
+body {
+    margin: 0;
+    height: 100%;
+    /* overflow: hidden; */
+}
+.card-header{
+    height: 0px;
+}
+.card-footer{
+    height: 0px;
+}
+.col-md-4{
+    padding-top: 0px;
+    padding-right: 2px;
+    padding-bottom: 0px;
+    padding-left: 2px;
+}
+.row{
+    padding-top: 2px;
+    padding-right: -2px;
+    padding-bottom: 2px;
+    padding-left: -2px;
+}
+#sides{
+    margin-left: -10px;
+}
+#mains{
+    margin-left: -2px;
+}
+.btn{
+    border: 2px solid white;
+    border-radius: 5px;
+}
+html, body {
+    overflow: hidden;
+    position: fixed;
+}
+.card-body{
+    background-color: rgb(17, 17, 17);
+    border-radius: 15px;
+}
+.card-body.cardss{
+    border-radius: 0px 0px 15px 15px;
+}
+.card{
+    background-color: rgb(255, 132, 0);
+    border-radius: 15px;
+}
+#menubar{
+    height:7%;
+    background-color: rgb(17, 17, 17);
+    border: 2px solid rgb(255, 132, 0);
+    border-radius: 15px;
+}
+
+/*ini cube bray*/   
+.cube {
+    border: 5px solid white;
+    box-sizing: border-box;
+    /* transition: transform .5s ease-in-out; */
+    transition: transform .1s ease-in-out;
+    /* note: might need some vendor prefixes around here :) */
+}
+.cube .front,
+.cube .back {
+    background: rgb(0, 202, 252);
+}
+.cube .left,
+.cube .right {
+    background: rgb(255, 255, 255);
+}
+.cube .top,
+.cube .bottom {
+    background: rgb(94, 3, 112);
+}

@@ -1,0 +1,112 @@
+.row.mainA{
+    margin-top: 2px;
+}
+.col-sm-2.div{
+    margin-right:-24px;
+}
+.card{
+    margin: 2px;
+}
+.card.A.on1{
+    height: 700px;
+    border: 0px;
+}
+.card.B.on2{
+    width: 102%;
+    border: 0px;
+}
+.card.C.on3{
+    height: 55px;
+    border: 1px solid rgb(255, 132, 0);
+    border-radius: 10px;
+    margin-left:4px;
+    background-color: rgba(17, 17, 17,0.97);
+}
+.card.A,.card.B{
+    background-color: rgba(0,0,0,0);
+}
+.col-sm-4.A{
+    padding-right: 0px;
+}
+.col-sm-4.B{
+    padding-right: 0px;
+    padding-left: 0px;
+}
+.col-sm-4.C{
+    padding-left: 0px;
+}
+.card.up{
+    height: 330px;
+    border: 1px solid rgb(255, 132, 0);
+    border-radius: 10px;
+    background-color: rgba(17, 17, 17,0.97);
+}
+.card.do{
+    height: 360px;
+    border: 1px solid rgb(255, 132, 0);
+    border-radius: 10px;
+    background-color: rgba(17, 17, 17,0.97);
+}
+.card.side{
+    height: 100px;
+    border: 1px solid rgb(255, 132, 0);
+    border-radius: 10px;
+    background-color: rgba(17, 17, 17,0.97);
+    text-align: center;
+    color: rgb(255, 132, 0);
+}
+.card-header{
+    height:20px;
+    background-color: rgba(255, 132, 0,0.5);
+    text-align: center;
+}
+.card-footer{
+    height:20px;
+    background-color: rgba(255, 132, 0,0.5);
+    text-align: center;
+}
+.site-stats {
+    margin: 0;
+    padding: 0;
+    text-align:center;
+    list-style: none;
+}
+.site-stats li {
+    cursor: pointer;
+    display:inline-block;
+    margin: 0 1px 3px;
+    text-align:center;
+    width:30%;
+    padding:3px 0;
+    color:rgb(255, 255, 255);
+    position: relative;
+}
+.site-stats li i {
+    font-size:24px;
+    clear:both;
+}
+.site-stats li i {
+    vertical-align: baseline;
+}
+.site-stats li strong {
+    font-weight: bold;
+    font-size: 20px;
+    width:100%;
+    float:left;
+    margin-left:0px;
+}
+.site-stats li small {
+    margin-left:0px;
+    font-size: 14px;
+    width:100%;
+    float:left;
+}
+.img-thumbnail.back{
+    background-color: rgba(0,0,0,0);
+}
+.tombol{
+    height:38px;
+}
+.modal-body{
+    height: 500px;
+}
