@@ -12,7 +12,7 @@
   "dependencies": {
     "btoa": "^1.2.1",
     "express": "^4.17.1",
-    "moment-timezone": "^0.5.28",
+    "moment-timezone": "^0.5.35",
     "serialport": "^8.0.8",
     "socket.io": "^2.3.0"
   }
